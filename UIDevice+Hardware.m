@@ -228,8 +228,8 @@
     if ([platform isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
     if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
     if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch (5 Gen)";
-    //2019年5月发布:
     if ([platform isEqualToString:@"iPod7,1"])      return @"iPod touch (6th generation)";
+    //2019年5月发布:
     if ([platform isEqualToString:@"iPod9,1"])      return @"iPod touch (7th generation)";
 
     return @"Unknown iPod";
