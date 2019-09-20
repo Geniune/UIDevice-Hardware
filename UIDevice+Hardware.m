@@ -160,7 +160,7 @@
     if ([platform isEqualToString:@"iPhone11,2"])  return @"iPhone XS";
     if ([platform isEqualToString:@"iPhone11,4"])  return @"iPhone XS Max";
     if ([platform isEqualToString:@"iPhone11,6"])  return @"iPhone XS Max";
-    //2019年9月发布，更新三种机型：iPhone 11、iPhone 11 Pro、iPhone 10 Pro Max
+    //2019年9月发布，更新三种机型：iPhone 11、iPhone 11 Pro、iPhone 11 Pro Max
     if ([platform isEqualToString:@"iPhone12,1"])  return  @"iPhone 11";
     if ([platform isEqualToString:@"iPhone12,3"])  return  @"iPhone 11 Pro";
     if ([platform isEqualToString:@"iPhone12,5"])  return  @"iPhone 11 Pro Max";
