@@ -148,17 +148,22 @@
     if ([platform isEqualToString:@"iPhone9,3"])    return @"iPhone 7";
     if ([platform isEqualToString:@"iPhone9,2"])    return @"iPhone 7 Plus";
     if ([platform isEqualToString:@"iPhone9,4"])    return @"iPhone 7 Plus";
+    //2017年9月发布，更新三种机型：iPhone 8、iPhone 8 Plus、iPhone X
     if ([platform isEqualToString:@"iPhone10,1"])  return @"iPhone 8";
     if ([platform isEqualToString:@"iPhone10,4"])  return @"iPhone 8";
     if ([platform isEqualToString:@"iPhone10,2"])  return @"iPhone 8 Plus";
     if ([platform isEqualToString:@"iPhone10,5"])  return @"iPhone 8 Plus";
     if ([platform isEqualToString:@"iPhone10,3"])  return @"iPhone X";
     if ([platform isEqualToString:@"iPhone10,6"])  return @"iPhone X";
-    //2018年10月发布：
+    //2018年10月发布，更新三种机型：iPhone XR、iPhone XS、iPhone XS Max
     if ([platform isEqualToString:@"iPhone11,8"])  return  @"iPhone XR";
     if ([platform isEqualToString:@"iPhone11,2"])  return @"iPhone XS";
     if ([platform isEqualToString:@"iPhone11,4"])  return @"iPhone XS Max";
     if ([platform isEqualToString:@"iPhone11,6"])  return @"iPhone XS Max";
+    //2019年9月发布，更新三种机型：iPhone 11、iPhone 11 Pro、iPhone 10 Pro Max
+    if ([platform isEqualToString:@"iPhone12,1"])  return  @"iPhone 11";
+    if ([platform isEqualToString:@"iPhone12,3"])  return  @"iPhone 11 Pro";
+    if ([platform isEqualToString:@"iPhone12,5"])  return  @"iPhone 11 Pro Max";
     
     return @"Unknown iPhone";
 }
