@@ -1,7 +1,6 @@
 # UIDevice-Hardware
-iOS获取设备相关信息
+iOS获取设备相关信息，相关简书贴：https://www.jianshu.com/p/308a4a85e114
 由于苹果为iPad打造了一套独立的系统：PadOS，因此Pad相关设备型号将不再更新
-
 ```
 #import "UIDevice+Hardware.h"
 
