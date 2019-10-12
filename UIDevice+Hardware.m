@@ -77,8 +77,6 @@
     return [self getSysInfo:KIPC_MAXSOCKBUF];
 }
 
-#pragma mark file system -- Thanks Joachim Bean!
-
 /*
  extern NSString *NSFileSystemSize;
  extern NSString *NSFileSystemFreeSize;
@@ -113,11 +111,6 @@
         return [self iPodPlatform:platform];
     }
     
-    if([platform rangeOfString:@"TV"].location != NSNotFound){
-        
-        return [self appleTVPlatform:platform];
-    }
-    
     if ([platform isEqualToString:@"i386"])             return @"Simulator";
     if ([platform isEqualToString:@"x86_64"])        return @"Simulator";
     
@@ -126,13 +119,13 @@
 
 - (NSString *)iPhonePlatform:(NSString *)platform{
     
-    if ([platform isEqualToString:@"iPhone1,1"]) return @"iPhone 2G";
-    if ([platform isEqualToString:@"iPhone1,2"]) return @"iPhone 3G";
-    if ([platform isEqualToString:@"iPhone2,1"]) return @"iPhone 3GS";
-    if ([platform isEqualToString:@"iPhone3,1"]) return @"iPhone 4";
-    if ([platform isEqualToString:@"iPhone3,2"]) return @"iPhone 4";
-    if ([platform isEqualToString:@"iPhone3,3"]) return @"iPhone 4";
-    if ([platform isEqualToString:@"iPhone4,1"]) return @"iPhone 4S";
+    if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 2G";
+    if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
+    if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
+    if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
+    if ([platform isEqualToString:@"iPhone3,2"])    return @"iPhone 4";
+    if ([platform isEqualToString:@"iPhone3,3"])    return @"iPhone 4";
+    if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone 4S";
     if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone 5";
     if ([platform isEqualToString:@"iPhone5,2"])    return @"iPhone 5";
     if ([platform isEqualToString:@"iPhone5,3"])    return @"iPhone 5c";
@@ -232,22 +225,17 @@
     if ([platform isEqualToString:@"iPod2,1"])      return @"iPod Touch 2G";
     if ([platform isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
     if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
-    if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch (5 Gen)";
+    if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch (5th generation)";
     if ([platform isEqualToString:@"iPod7,1"])      return @"iPod touch (6th generation)";
-    //2019年5月发布:
+    //2019年5月发布，更新三种机型：iPod touch (7th generation)
     if ([platform isEqualToString:@"iPod9,1"])      return @"iPod touch (7th generation)";
 
     return @"Unknown iPod";
 }
 
-- (NSString *)appleTVPlatform:(NSString *)platform{
+- (float)iOSVersion{
     
-    if ([platform isEqualToString:@"AppleTV2,1"])    return @"Apple TV 2";
-    if ([platform isEqualToString:@"AppleTV3,1"])    return @"Apple TV 3";
-    if ([platform isEqualToString:@"AppleTV3,2"])    return @"Apple TV 3";
-    if ([platform isEqualToString:@"AppleTV5,3"])    return @"Apple TV 4";
-
-    return @"Unknown Apple TV";
+    return [[self systemVersion] floatValue];
 }
 
 #pragma mark MAC addy
