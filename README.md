@@ -10,7 +10,7 @@ UIDevice *device = [UIDevice currentDevice];
 NSLog(@"设备型号：%@", device.platformString); 
 NSLog(@"MAC地址：%@", device.macAddress);
 NSLog(@"IP地址：%@", device.ipAddresses);
-NSLog(@"iOS版本：%.1f", device.iOSVersion);
+NSLog(@"iOS版本：%@", device.systemVersion);
 ```
 输出示例：
 ```

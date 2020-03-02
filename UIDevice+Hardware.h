@@ -5,7 +5,6 @@
 
 - (NSString *)platform;
 - (NSString *)platformString;
-- (float)iOSVersion;
 
 - (NSUInteger)cpuFrequency;
 - (NSUInteger)busFrequency;

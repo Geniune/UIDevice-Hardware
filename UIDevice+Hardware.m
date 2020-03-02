@@ -227,15 +227,10 @@
     if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
     if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch (5th generation)";
     if ([platform isEqualToString:@"iPod7,1"])      return @"iPod touch (6th generation)";
-    //2019年5月发布，更新三种机型：iPod touch (7th generation)
+    //2019年5月发布，更新一种机型：iPod touch (7th generation)
     if ([platform isEqualToString:@"iPod9,1"])      return @"iPod touch (7th generation)";
 
     return @"Unknown iPod";
-}
-
-- (float)iOSVersion{
-    
-    return [[self systemVersion] floatValue];
 }
 
 #pragma mark MAC addy
