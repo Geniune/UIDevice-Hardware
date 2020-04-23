@@ -212,7 +212,10 @@
     if ([platform isEqualToString:@"iPad8,6"])   return @"iPad Pro (12.9-inch) (3rd generation)";
     if ([platform isEqualToString:@"iPad8,7"])   return @"iPad Pro (12.9-inch) (3rd generation)";
     if ([platform isEqualToString:@"iPad8,8"])   return @"iPad Pro (12.9-inch) (3rd generation)";
-    //2019年3月发布:
+    if ([platform isEqualToString:@"iPad8,9"])   return @"iPad Pro (11-inch) (2nd generation)";
+    if ([platform isEqualToString:@"iPad8,10"])   return @"iPad Pro (11-inch) (2nd generation)";
+    if ([platform isEqualToString:@"iPad8,11"])   return @"iPad Pro (12.9-inch) (4th generation)";
+    if ([platform isEqualToString:@"iPad8,12"])   return @"iPad Pro (12.9-inch) (4th generation)";
     if ([platform isEqualToString:@"iPad11,1"])   return @"iPad mini (5th generation)";
     if ([platform isEqualToString:@"iPad11,2"])   return @"iPad mini (5th generation)";
     if ([platform isEqualToString:@"iPad11,3"])   return @"iPad Air (3rd generation)";
