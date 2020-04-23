@@ -157,6 +157,8 @@
     if ([platform isEqualToString:@"iPhone12,1"])  return  @"iPhone 11";
     if ([platform isEqualToString:@"iPhone12,3"])  return  @"iPhone 11 Pro";
     if ([platform isEqualToString:@"iPhone12,5"])  return  @"iPhone 11 Pro Max";
+    //2020年4月发布，更新一种机型：iPhone SE2
+    if ([platform isEqualToString:@"iPhone12,8"])  return  @"iPhone SE (2nd generation)";
     
     return @"Unknown iPhone";
 }
