@@ -1,3 +1,9 @@
+//
+//  UIDevice.m
+//
+//  Created by Geniune on 2020/4/23.
+//  Copyright © 2020 Geniune. All rights reserved.
+//
 
 #import "UIDevice+Hardware.h"
 
@@ -13,23 +19,10 @@
 #import <arpa/inet.h>
 
 @implementation UIDevice (Hardware)
-#pragma mark sysctlbyname utils
-- (NSString *) getSysInfoByName:(char *)typeSpecifier
-{
-    size_t size;
-    sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
-    
-    char *answer = malloc(size);
-    sysctlbyname(typeSpecifier, answer, &size, NULL, 0);
-    
-    NSString *results = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
 
-    free(answer);
-    return results;
-}
-
-- (NSString *)platform
-{
+#pragma mark - 获取当前设备Model Identifier
+- (NSString *)platform{
+    
     struct utsname systemInfo;
     uname(&systemInfo);
     NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
@@ -37,89 +30,43 @@
     return deviceString;
 }
 
-#pragma mark sysctl utils
-- (NSUInteger) getSysInfo: (uint) typeSpecifier
-{
-    size_t size = sizeof(int);
-    int results;
-    int mib[2] = {CTL_HW, typeSpecifier};
-    sysctl(mib, 2, &results, &size, NULL, 0);
-    return (NSUInteger) results;
-}
-
-- (NSUInteger) cpuFrequency
-{
-    return [self getSysInfo:HW_CPU_FREQ];
-}
-
-- (NSUInteger) busFrequency
-{
-    return [self getSysInfo:HW_BUS_FREQ];
-}
-
-- (NSUInteger) cpuCount
-{
-    return [self getSysInfo:HW_NCPU];
-}
-
-- (NSUInteger) totalMemory
-{
-    return [self getSysInfo:HW_PHYSMEM];
-}
-
-- (NSUInteger) userMemory
-{
-    return [self getSysInfo:HW_USERMEM];
-}
-
-- (NSUInteger) maxSocketBufferSize
-{
-    return [self getSysInfo:KIPC_MAXSOCKBUF];
-}
-
-/*
- extern NSString *NSFileSystemSize;
- extern NSString *NSFileSystemFreeSize;
- extern NSString *NSFileSystemNodes;
- extern NSString *NSFileSystemFreeNodes;
- extern NSString *NSFileSystemNumber;
-*/
-
-- (NSNumber *) totalDiskSpace
-{
-    NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
-    return [fattributes objectForKey:NSFileSystemSize];
-}
-
-- (NSNumber *) freeDiskSpace
-{
-    NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
-    return [fattributes objectForKey:NSFileSystemFreeSize];
-}
-
+#pragma mark - 将设备Model Identifier转为Generation
 - (NSString *)platformString{
     
     NSString *platform = [self platform];
     
-    if([platform rangeOfString:@"iPhone"].location != NSNotFound){
-        return [self iPhonePlatform:platform];
-    }
-    if([platform rangeOfString:@"iPad"].location != NSNotFound){
-        return [self iPadPlatform:platform];
-    }
-    if([platform rangeOfString:@"iPod"].location != NSNotFound){
-        return [self iPodPlatform:platform];
-    }
-    
     if ([platform isEqualToString:@"i386"])             return @"Simulator";
     if ([platform isEqualToString:@"x86_64"])        return @"Simulator";
+    
+    if([platform rangeOfString:@"iPhone"].location != NSNotFound){
+        return iPhonePlatform(platform);
+    }
+    if([platform rangeOfString:@"iPad"].location != NSNotFound){
+        return iPadPlatform(platform);
+    }
+    if([platform rangeOfString:@"iPod"].location != NSNotFound){
+        return iPodPlatform(platform);
+    }
+    if([platform rangeOfString:@"AirPods"].location != NSNotFound){
+        return AirPodsPlatform(platform);
+    }
+    if([platform rangeOfString:@"AppleTV"].location != NSNotFound){
+        return AppleTVPlatform(platform);
+    }
+    if([platform rangeOfString:@"Watch"].location != NSNotFound){
+        return AppleWatchPlatform(platform);
+    }
+    if([platform rangeOfString:@"HomePod"].location != NSNotFound){
+        return HomePodPlatform(platform);
+    }
     
     return @"Unknown iOS Device";
 }
 
-- (NSString *)iPhonePlatform:(NSString *)platform{
+#pragma mark - iPhone
+NSString *iPhonePlatform(NSString *platform){
     
-    if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone 2G";
+    if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone";
     if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
     if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
     if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
@@ -163,47 +110,46 @@
     return @"Unknown iPhone";
 }
 
-- (NSString *)iPadPlatform:(NSString *)platform{
+#pragma mark - iPad
+NSString *iPadPlatform(NSString *platform){
     
+    //iPad
     if ([platform isEqualToString:@"iPad1,1"])   return @"iPad";
-    if ([platform isEqualToString:@"iPad1,2"])   return @"iPad 3G";
-    if ([platform isEqualToString:@"iPad2,1"])   return @"iPad 2 (WiFi)";
+    if ([platform isEqualToString:@"iPad2,1"])   return @"iPad 2";
     if ([platform isEqualToString:@"iPad2,2"])   return @"iPad 2";
-    if ([platform isEqualToString:@"iPad2,3"])   return @"iPad 2 (CDMA)";
+    if ([platform isEqualToString:@"iPad2,3"])   return @"iPad 2";
     if ([platform isEqualToString:@"iPad2,4"])   return @"iPad 2";
-    if ([platform isEqualToString:@"iPad2,5"])   return @"iPad Mini (WiFi)";
-    if ([platform isEqualToString:@"iPad2,6"])   return @"iPad Mini";
-    if ([platform isEqualToString:@"iPad2,7"])   return @"iPad Mini (GSM+CDMA)";
-    if ([platform isEqualToString:@"iPad3,1"])   return @"iPad 3 (WiFi)";
-    if ([platform isEqualToString:@"iPad3,2"])   return @"iPad 3 (GSM+CDMA)";
-    if ([platform isEqualToString:@"iPad3,3"])   return @"iPad 3";
-    if ([platform isEqualToString:@"iPad3,4"])   return @"iPad 4 (WiFi)";
-    if ([platform isEqualToString:@"iPad3,5"])   return @"iPad 4";
-    if ([platform isEqualToString:@"iPad3,6"])   return @"iPad 4 (GSM+CDMA)";
-    if ([platform isEqualToString:@"iPad4,1"])   return @"iPad Air (WiFi)";
-    if ([platform isEqualToString:@"iPad4,2"])   return @"iPad Air (Cellular)";
-    if ([platform isEqualToString:@"iPad4,4"])   return @"iPad Mini 2 (WiFi)";
-    if ([platform isEqualToString:@"iPad4,5"])   return @"iPad Mini 2 (Cellular)";
-    if ([platform isEqualToString:@"iPad4,6"])   return @"iPad Mini 2";
-    if ([platform isEqualToString:@"iPad4,7"])   return @"iPad Mini 3";
-    if ([platform isEqualToString:@"iPad4,8"])   return @"iPad Mini 3";
-    if ([platform isEqualToString:@"iPad4,9"])   return @"iPad Mini 3";
-    if ([platform isEqualToString:@"iPad5,1"])   return @"iPad Mini 4 (WiFi)";
-    if ([platform isEqualToString:@"iPad5,2"])   return @"iPad Mini 4 (LTE)";
-    if ([platform isEqualToString:@"iPad5,3"])   return @"iPad Air 2";
-    if ([platform isEqualToString:@"iPad5,4"])   return @"iPad Air 2";
-    if ([platform isEqualToString:@"iPad6,3"])   return @"iPad Pro 9.7";
-    if ([platform isEqualToString:@"iPad6,4"])   return @"iPad Pro 9.7";
-    if ([platform isEqualToString:@"iPad6,7"])   return @"iPad Pro 12.9";
-    if ([platform isEqualToString:@"iPad6,8"])   return @"iPad Pro 12.9";
-    if ([platform isEqualToString:@"iPad6,11"])  return @"iPad 5 (WiFi)";
-    if ([platform isEqualToString:@"iPad6,12"])  return @"iPad 5 (Cellular)";
-    if ([platform isEqualToString:@"iPad7,1"])   return @"iPad Pro 12.9 inch 2nd gen (WiFi)";
-    if ([platform isEqualToString:@"iPad7,2"])   return @"iPad Pro 12.9 inch 2nd gen (Cellular)";
-    if ([platform isEqualToString:@"iPad7,3"])   return @"iPad Pro 10.5 inch (WiFi)";
-    if ([platform isEqualToString:@"iPad7,4"])   return @"iPad Pro 10.5 inch (Cellular)";
+    if ([platform isEqualToString:@"iPad3,1"])   return @"iPad (3rd generation)";
+    if ([platform isEqualToString:@"iPad3,2"])   return @"iPad (3rd generation)";
+    if ([platform isEqualToString:@"iPad3,3"])   return @"iPad (3rd generation)";
+    if ([platform isEqualToString:@"iPad3,4"])   return @"iPad (4th generation)";
+    if ([platform isEqualToString:@"iPad3,5"])   return @"iPad (4th generation)";
+    if ([platform isEqualToString:@"iPad3,6"])   return @"iPad (4th generation)";
+    if ([platform isEqualToString:@"iPad6,11"])  return @"iPad (5th generation)";
+    if ([platform isEqualToString:@"iPad6,12"])  return @"iPad (5th generation)";
     if ([platform isEqualToString:@"iPad7,5"])   return @"iPad (6th generation)";
     if ([platform isEqualToString:@"iPad7,6"])   return @"iPad (6th generation)";
+    if ([platform isEqualToString:@"iPad7,11"])   return @"iPad (7th generation)";
+    if ([platform isEqualToString:@"iPad7,12"])   return @"iPad (7th generation)";
+
+    //iPad Air
+    if ([platform isEqualToString:@"iPad4,1"])   return @"iPad Air";
+    if ([platform isEqualToString:@"iPad4,2"])   return @"iPad Air";
+    if ([platform isEqualToString:@"iPad4,3"])   return @"iPad Air";
+    if ([platform isEqualToString:@"iPad5,3"])   return @"iPad Air 2";
+    if ([platform isEqualToString:@"iPad5,4"])   return @"iPad Air 2";
+    if ([platform isEqualToString:@"iPad11,3"])   return @"iPad Air (3rd generation)";
+    if ([platform isEqualToString:@"iPad11,4"])   return @"iPad Air (3rd generation)";
+    
+    //iPad Pro
+    if ([platform isEqualToString:@"iPad6,7"])   return @"iPad Pro (12.9-inch) ";
+    if ([platform isEqualToString:@"iPad6,8"])   return @"iPad Pro (12.9-inch) ";
+    if ([platform isEqualToString:@"iPad6,3"])   return @"iPad Pro (9.7-inch)";
+    if ([platform isEqualToString:@"iPad6,4"])   return @"iPad Pro (9.7-inch)";
+    if ([platform isEqualToString:@"iPad7,1"])   return @"iPad Pro (12.9-inch) (2nd generation) ";
+    if ([platform isEqualToString:@"iPad7,2"])   return @"iPad Pro (12.9-inch) (2nd generation) ";
+    if ([platform isEqualToString:@"iPad7,3"])   return @"iPad Pro (10.5-inch)";
+    if ([platform isEqualToString:@"iPad7,4"])   return @"iPad Pro (10.5-inch)";
     if ([platform isEqualToString:@"iPad8,1"])   return @"iPad Pro (11-inch)";
     if ([platform isEqualToString:@"iPad8,2"])   return @"iPad Pro (11-inch)";
     if ([platform isEqualToString:@"iPad8,3"])   return @"iPad Pro (11-inch)";
@@ -216,20 +162,32 @@
     if ([platform isEqualToString:@"iPad8,10"])   return @"iPad Pro (11-inch) (2nd generation)";
     if ([platform isEqualToString:@"iPad8,11"])   return @"iPad Pro (12.9-inch) (4th generation)";
     if ([platform isEqualToString:@"iPad8,12"])   return @"iPad Pro (12.9-inch) (4th generation)";
+    
+    //iPad mini
+    if ([platform isEqualToString:@"iPad2,5"])   return @"iPad mini";
+    if ([platform isEqualToString:@"iPad2,6"])   return @"iPad mini";
+    if ([platform isEqualToString:@"iPad2,7"])   return @"iPad mini";
+    if ([platform isEqualToString:@"iPad4,4"])   return @"iPad mini 2";
+    if ([platform isEqualToString:@"iPad4,5"])   return @"iPad mini 2";
+    if ([platform isEqualToString:@"iPad4,6"])   return @"iPad mini 2";
+    if ([platform isEqualToString:@"iPad4,7"])   return @"iPad mini 3";
+    if ([platform isEqualToString:@"iPad4,8"])   return @"iPad mini 3";
+    if ([platform isEqualToString:@"iPad4,9"])   return @"iPad mini 3";
+    if ([platform isEqualToString:@"iPad5,1"])   return @"iPad mini 4";
+    if ([platform isEqualToString:@"iPad5,2"])   return @"iPad mini 4";
     if ([platform isEqualToString:@"iPad11,1"])   return @"iPad mini (5th generation)";
     if ([platform isEqualToString:@"iPad11,2"])   return @"iPad mini (5th generation)";
-    if ([platform isEqualToString:@"iPad11,3"])   return @"iPad Air (3rd generation)";
-    if ([platform isEqualToString:@"iPad11,4"])   return @"iPad Air (3rd generation)";
 
     return @"Unknown iPad";
 }
 
-- (NSString *)iPodPlatform:(NSString *)platform{
+#pragma mark - iPod
+NSString *iPodPlatform(NSString *platform){
     
-    if ([platform isEqualToString:@"iPod1,1"])      return @"iPod Touch 1G";
-    if ([platform isEqualToString:@"iPod2,1"])      return @"iPod Touch 2G";
-    if ([platform isEqualToString:@"iPod3,1"])      return @"iPod Touch 3G";
-    if ([platform isEqualToString:@"iPod4,1"])      return @"iPod Touch 4G";
+    if ([platform isEqualToString:@"iPod1,1"])      return @"iPod Touch";
+    if ([platform isEqualToString:@"iPod2,1"])      return @"iPod touch (2nd generation)";
+    if ([platform isEqualToString:@"iPod3,1"])      return @"iPod touch (3rd generation)";
+    if ([platform isEqualToString:@"iPod4,1"])      return @"iPod touch (4th generation)";
     if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch (5th generation)";
     if ([platform isEqualToString:@"iPod7,1"])      return @"iPod touch (6th generation)";
     //2019年5月发布，更新一种机型：iPod touch (7th generation)
@@ -238,7 +196,58 @@
     return @"Unknown iPod";
 }
 
-#pragma mark MAC addy
+#pragma mark - AirPods
+NSString *AirPodsPlatform(NSString *platform){
+    
+    if ([platform isEqualToString:@"AirPods1,1"])      return @"AirPods (1st generation)";
+    if ([platform isEqualToString:@"AirPods2,1"])      return @"AirPods (2nd generation)";
+    if ([platform isEqualToString:@"AirPods8,1"])      return @"AirPods Pro";
+
+    return @"Unknown AirPods";
+}
+
+#pragma mark - Apple TV
+NSString *AppleTVPlatform(NSString *platform){
+    
+    if ([platform isEqualToString:@"AppleTV2,1"])      return @"Apple TV (2nd generation)";
+    if ([platform isEqualToString:@"AppleTV3,1"])      return @"Apple TV (3rd generation)";
+    if ([platform isEqualToString:@"AppleTV5,3"])      return @"Apple TV (4th generation)";
+    if ([platform isEqualToString:@"AppleTV6,2"])      return @"Apple TV 4K ";
+
+    return @"Unknown Apple TV";
+}
+
+#pragma mark - Apple Watch
+NSString *AppleWatchPlatform(NSString *platform){
+    
+    if ([platform isEqualToString:@"Watch1,1"])      return @"Apple Watch (1st generation)";
+    if ([platform isEqualToString:@"Watch1,2"])      return @"Apple Watch (1st generation)";
+    if ([platform isEqualToString:@"Watch2,6"])      return @"Apple Watch Series 1";
+    if ([platform isEqualToString:@"Watch2,7"])      return @"Apple Watch Series 1";
+    if ([platform isEqualToString:@"Watch2,3"])      return @"Apple Watch Series 2";
+    if ([platform isEqualToString:@"Watch2,4"])      return @"Apple Watch Series 2";
+    if ([platform isEqualToString:@"Watch3,1"])      return @"Apple Watch Series 3";
+    if ([platform isEqualToString:@"Watch3,2"])      return @"Apple Watch Series 3";
+    if ([platform isEqualToString:@"Watch3,3"])      return @"Apple Watch Series 3";
+    if ([platform isEqualToString:@"Watch3,4"])      return @"Apple Watch Series 3";
+    if ([platform isEqualToString:@"Watch4,1"])      return @"Apple Watch Series 4";
+    if ([platform isEqualToString:@"Watch4,2"])      return @"Apple Watch Series 4";
+    if ([platform isEqualToString:@"Watch4,3"])      return @"Apple Watch Series 4";
+    if ([platform isEqualToString:@"Watch4,4"])      return @"Apple Watch Series 4";
+
+    return @"Unknown Apple Watch";
+}
+
+#pragma mark - HomePod
+NSString *HomePodPlatform(NSString *platform){
+    
+    if ([platform isEqualToString:@"AudioAccessory1,1"])      return @"HomePod";
+    if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
+
+    return @"Unknown HomePod";
+}
+
+#pragma mark - MAC Address
 - (NSString *)macAddress{
     
     int                 mib[6];
@@ -284,6 +293,7 @@
     return outstring;
 }
 
+#pragma mark - IP Address
 - (NSString *)ipAddresses{
     
     int sockfd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -337,6 +347,80 @@
         }
     }
     return deviceIP;
+}
+
+#pragma mark sysctlbyname utils
+- (NSString *) getSysInfoByName:(char *)typeSpecifier
+{
+    size_t size;
+    sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
+    
+    char *answer = malloc(size);
+    sysctlbyname(typeSpecifier, answer, &size, NULL, 0);
+    
+    NSString *results = [NSString stringWithCString:answer encoding: NSUTF8StringEncoding];
+
+    free(answer);
+    return results;
+}
+
+#pragma mark sysctl utils
+- (NSUInteger) getSysInfo: (uint) typeSpecifier
+{
+    size_t size = sizeof(int);
+    int results;
+    int mib[2] = {CTL_HW, typeSpecifier};
+    sysctl(mib, 2, &results, &size, NULL, 0);
+    return (NSUInteger) results;
+}
+
+- (NSUInteger) cpuFrequency
+{
+    return [self getSysInfo:HW_CPU_FREQ];
+}
+
+- (NSUInteger) busFrequency
+{
+    return [self getSysInfo:HW_BUS_FREQ];
+}
+
+- (NSUInteger) cpuCount
+{
+    return [self getSysInfo:HW_NCPU];
+}
+
+- (NSUInteger) totalMemory
+{
+    return [self getSysInfo:HW_PHYSMEM];
+}
+
+- (NSUInteger) userMemory
+{
+    return [self getSysInfo:HW_USERMEM];
+}
+
+- (NSUInteger) maxSocketBufferSize
+{
+    return [self getSysInfo:KIPC_MAXSOCKBUF];
+}
+
+/*
+ extern NSString *NSFileSystemSize;
+ extern NSString *NSFileSystemFreeSize;
+ extern NSString *NSFileSystemNodes;
+ extern NSString *NSFileSystemFreeNodes;
+ extern NSString *NSFileSystemNumber;
+*/
+- (NSNumber *)totalDiskSpace{
+    
+    NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
+    return [fattributes objectForKey:NSFileSystemSize];
+}
+
+- (NSNumber *)freeDiskSpace{
+    
+    NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
+    return [fattributes objectForKey:NSFileSystemFreeSize];
 }
 
 @end

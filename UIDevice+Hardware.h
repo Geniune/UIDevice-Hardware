@@ -1,21 +1,19 @@
-
-#import <UIKit/UIKit.h>
+//
+//  UIDevice.h
+//
+//  Created by Geniune on 2020/4/23.
+//  Copyright © 2020 Geniune. All rights reserved.
+//
 
 @interface UIDevice (Hardware)
 
+/// Model Identifier
 - (NSString *)platform;
+/// Model Identifier转为Generation
 - (NSString *)platformString;
-
-- (NSUInteger)cpuFrequency;
-- (NSUInteger)busFrequency;
-- (NSUInteger)cpuCount;
-- (NSUInteger)totalMemory;
-- (NSUInteger)userMemory;
-
-- (NSNumber *)totalDiskSpace;
-- (NSNumber *)freeDiskSpace;
-
+/// Mac地址
 - (NSString *)macAddress;
+/// IPd地址
 - (NSString *)ipAddresses;
 
 @end
