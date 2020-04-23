@@ -66,24 +66,35 @@
 #pragma mark - iPhone
 NSString *iPhonePlatform(NSString *platform){
     
+    //2007年1月发布，更新一种机型：iPhone
     if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone";
+    //2008年6月发布，更新一种机型：iPhone 3G
     if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
+    //2009年6月发布，更新一种机型：iPhone 3G
     if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
+    //2010年6月发布，更新一种机型：iPhone 4
     if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
     if ([platform isEqualToString:@"iPhone3,2"])    return @"iPhone 4";
     if ([platform isEqualToString:@"iPhone3,3"])    return @"iPhone 4";
-    if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone 4S";
+    //2011年10月发布，更新一种机型：iPhone 4s
+    if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone 4s";
+    //2012年9月发布，更新一种机型：iPhone 5
     if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone 5";
     if ([platform isEqualToString:@"iPhone5,2"])    return @"iPhone 5";
+    //2013年9月发布，更新二种机型：iPhone 5c、iPhone 5s
     if ([platform isEqualToString:@"iPhone5,3"])    return @"iPhone 5c";
     if ([platform isEqualToString:@"iPhone5,4"])    return @"iPhone 5c";
     if ([platform isEqualToString:@"iPhone6,1"])    return @"iPhone 5s";
     if ([platform isEqualToString:@"iPhone6,2"])    return @"iPhone 5s";
+    //2014年9月发布，更新二种机型：iPhone 6、iPhone 6 Plus
     if ([platform isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
     if ([platform isEqualToString:@"iPhone7,1"])    return @"iPhone 6 Plus";
+    //2015年9月发布，更新二种机型：iPhone 6s、iPhone 6s Plus
     if ([platform isEqualToString:@"iPhone8,1"])    return @"iPhone 6s";
     if ([platform isEqualToString:@"iPhone8,2"])    return @"iPhone 6s Plus";
+    //2016年3月发布，更新一种机型：iPhone SE
     if ([platform isEqualToString:@"iPhone8,4"])    return @"iPhone SE";
+    //2016年9月发布，更新二种机型：iPhone 7、iPhone 7 Plus
     if ([platform isEqualToString:@"iPhone9,1"])    return @"iPhone 7";
     if ([platform isEqualToString:@"iPhone9,3"])    return @"iPhone 7";
     if ([platform isEqualToString:@"iPhone9,2"])    return @"iPhone 7 Plus";
@@ -107,13 +118,12 @@ NSString *iPhonePlatform(NSString *platform){
     //2020年4月发布，更新一种机型：iPhone SE2
     if ([platform isEqualToString:@"iPhone12,8"])  return  @"iPhone SE (2nd generation)";
     
-    return @"Unknown iPhone";
+    return [NSString stringWithFormat:@"Unknown iPhone Identifier:%@", platform"];
 }
 
 #pragma mark - iPad
 NSString *iPadPlatform(NSString *platform){
     
-    //iPad
     if ([platform isEqualToString:@"iPad1,1"])   return @"iPad";
     if ([platform isEqualToString:@"iPad2,1"])   return @"iPad 2";
     if ([platform isEqualToString:@"iPad2,2"])   return @"iPad 2";
@@ -131,8 +141,6 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad7,6"])   return @"iPad (6th generation)";
     if ([platform isEqualToString:@"iPad7,11"])   return @"iPad (7th generation)";
     if ([platform isEqualToString:@"iPad7,12"])   return @"iPad (7th generation)";
-
-    //iPad Air
     if ([platform isEqualToString:@"iPad4,1"])   return @"iPad Air";
     if ([platform isEqualToString:@"iPad4,2"])   return @"iPad Air";
     if ([platform isEqualToString:@"iPad4,3"])   return @"iPad Air";
@@ -140,8 +148,6 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad5,4"])   return @"iPad Air 2";
     if ([platform isEqualToString:@"iPad11,3"])   return @"iPad Air (3rd generation)";
     if ([platform isEqualToString:@"iPad11,4"])   return @"iPad Air (3rd generation)";
-    
-    //iPad Pro
     if ([platform isEqualToString:@"iPad6,7"])   return @"iPad Pro (12.9-inch) ";
     if ([platform isEqualToString:@"iPad6,8"])   return @"iPad Pro (12.9-inch) ";
     if ([platform isEqualToString:@"iPad6,3"])   return @"iPad Pro (9.7-inch)";
@@ -162,8 +168,6 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad8,10"])   return @"iPad Pro (11-inch) (2nd generation)";
     if ([platform isEqualToString:@"iPad8,11"])   return @"iPad Pro (12.9-inch) (4th generation)";
     if ([platform isEqualToString:@"iPad8,12"])   return @"iPad Pro (12.9-inch) (4th generation)";
-    
-    //iPad mini
     if ([platform isEqualToString:@"iPad2,5"])   return @"iPad mini";
     if ([platform isEqualToString:@"iPad2,6"])   return @"iPad mini";
     if ([platform isEqualToString:@"iPad2,7"])   return @"iPad mini";
@@ -175,8 +179,8 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad4,9"])   return @"iPad mini 3";
     if ([platform isEqualToString:@"iPad5,1"])   return @"iPad mini 4";
     if ([platform isEqualToString:@"iPad5,2"])   return @"iPad mini 4";
-    if ([platform isEqualToString:@"iPad11,1"])   return @"iPad mini (5th generation)";
-    if ([platform isEqualToString:@"iPad11,2"])   return @"iPad mini (5th generation)";
+    if ([platform isEqualToString:@"iPad11,1"])   return @"iPad mini 5";
+    if ([platform isEqualToString:@"iPad11,2"])   return @"iPad mini 5";
 
     return @"Unknown iPad";
 }
