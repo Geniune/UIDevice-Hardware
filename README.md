@@ -7,7 +7,7 @@
 3. iPod全系列（包括iPod touch 7）
 4. AirPods（包括AirPods Pro）
 5. Apple Watch全系列
-6. HomdPod（目前苹果只推出过一款）
+6. HomePod（目前苹果只推出过一款）
 
 
 觉得用着还行记得给个star~ ：）
