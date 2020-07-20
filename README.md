@@ -2,11 +2,11 @@
 相关技术贴链接：https://www.jianshu.com/p/308a4a85e114
 
 获取苹果设备相关信息，目前支持的全家桶：
-1. iPhone全系列（包括2020年最新推出的iPhone SE2）
-2. iPad全系列（包括iPad、iPad Air、iPad Pro、iPad mini）
-3. iPod全系列（包括iPod touch 7）
-4. AirPods（包括AirPods Pro）
-5. Apple Watch全系列
+1. iPhone 全系列
+2. iPad 全系列
+3. iPod 全系列
+4. AirPods 全系列
+5. Apple Watch 全系列
 6. HomePod（目前苹果只推出过一款）
 
 
