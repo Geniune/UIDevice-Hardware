@@ -119,8 +119,7 @@ NSString *iPhonePlatform(NSString *platform){
     if ([platform isEqualToString:@"iPhone12,5"])  return  @"iPhone 11 Pro Max";
     //2020年4月发布，更新一种机型：iPhone SE2
     if ([platform isEqualToString:@"iPhone12,8"])  return  @"iPhone SE2";
-    //2020年9月发布，更新四种机型：iPhone 12、iPhone 12 Max、iPhone 12 Pro、iPhone 12 Pro Max
-//    if ([platform isEqualToString:@"iPhone13,1"])  return  @"iPhone 12";
+    //TODO:2020年月发布，更新四种机型：iPhone 12、iPhone 12 Max、iPhone 12 Pro、iPhone 12 Pro Max
     
     NSLog(@"Unknown iPhone: %@", platform);
     return platform;
@@ -247,10 +246,16 @@ NSString *AppleWatchPlatform(NSString *platform){
     if ([platform isEqualToString:@"Watch3,2"])      return @"Apple Watch Series 3";
     if ([platform isEqualToString:@"Watch3,3"])      return @"Apple Watch Series 3";
     if ([platform isEqualToString:@"Watch3,4"])      return @"Apple Watch Series 3";
+    //2018年9月发布，更新一种机型：Apple Watch S4
     if ([platform isEqualToString:@"Watch4,1"])      return @"Apple Watch Series 4";
     if ([platform isEqualToString:@"Watch4,2"])      return @"Apple Watch Series 4";
     if ([platform isEqualToString:@"Watch4,3"])      return @"Apple Watch Series 4";
     if ([platform isEqualToString:@"Watch4,4"])      return @"Apple Watch Series 4";
+    //2019年9月发布，更新一种机型：Apple Watch S5
+    if ([platform isEqualToString:@"Watch5,1"])      return @"Apple Watch Series 5";
+    if ([platform isEqualToString:@"Watch5,2"])      return @"Apple Watch Series 5";
+    if ([platform isEqualToString:@"Watch5,3"])      return @"Apple Watch Series 5";
+    if ([platform isEqualToString:@"Watch5,4"])      return @"Apple Watch Series 5";
 
     NSLog(@"Unknown Apple Watch: %@", platform);
     return platform;
@@ -259,6 +264,7 @@ NSString *AppleWatchPlatform(NSString *platform){
 #pragma mark - HomePod
 NSString *HomePodPlatform(NSString *platform){
     
+    //2017年6月发布，更新一种机型：HomePod
     if ([platform isEqualToString:@"AudioAccessory1,1"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
 
