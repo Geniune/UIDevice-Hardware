@@ -20,6 +20,12 @@
 
 @implementation UIDevice (Hardware)
 
+#pragma mark - 设备搭载系统及版本号
+- (NSString *)systemString{
+    
+    return [NSString stringWithFormat:@"%@ %@", self.systemName, self.systemVersion];
+}
+
 #pragma mark - 设备Model Identifier
 - (NSString *)platform{
     
