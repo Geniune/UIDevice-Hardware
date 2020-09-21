@@ -125,7 +125,6 @@ NSString *iPhonePlatform(NSString *platform){
     if ([platform isEqualToString:@"iPhone12,5"])  return  @"iPhone 11 Pro Max";
     //2020年4月发布，更新一种机型：iPhone SE2
     if ([platform isEqualToString:@"iPhone12,8"])  return  @"iPhone SE2";
-    //TODO:2020年月发布，更新四种机型：iPhone 12、iPhone 12 Max、iPhone 12 Pro、iPhone 12 Pro Max
     
     NSLog(@"Unknown iPhone: %@", platform);
     return platform;
@@ -152,6 +151,9 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad7,6"])   return @"iPad 6";
     if ([platform isEqualToString:@"iPad7,11"])   return @"iPad 7";
     if ([platform isEqualToString:@"iPad7,12"])   return @"iPad 7";
+    if ([platform isEqualToString:@"iPad11,6"])   return @"iPad 8";
+    if ([platform isEqualToString:@"iPad11,7"])   return @"iPad 8";
+    
     //iPad Air
     if ([platform isEqualToString:@"iPad4,1"])   return @"iPad Air";
     if ([platform isEqualToString:@"iPad4,2"])   return @"iPad Air";
@@ -160,6 +162,9 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad5,4"])   return @"iPad Air 2";
     if ([platform isEqualToString:@"iPad11,3"])   return @"iPad Air 3";
     if ([platform isEqualToString:@"iPad11,4"])   return @"iPad Air 3";
+    if ([platform isEqualToString:@"iPad13,1"])   return @"iPad Air 4";
+    if ([platform isEqualToString:@"iPad13,2"])   return @"iPad Air 4";
+    
     //iPad Pro
     if ([platform isEqualToString:@"iPad6,7"])   return @"iPad Pro (12.9-inch) ";
     if ([platform isEqualToString:@"iPad6,8"])   return @"iPad Pro (12.9-inch) ";
@@ -181,6 +186,7 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad8,10"])   return @"iPad Pro 2 (11-inch)";
     if ([platform isEqualToString:@"iPad8,11"])   return @"iPad Pro 4 (12.9-inch)";
     if ([platform isEqualToString:@"iPad8,12"])   return @"iPad Pro 4 (12.9-inch)";
+    
     //iPad mini
     if ([platform isEqualToString:@"iPad2,5"])   return @"iPad mini";
     if ([platform isEqualToString:@"iPad2,6"])   return @"iPad mini";
@@ -230,6 +236,7 @@ NSString *AirPodsPlatform(NSString *platform){
 #pragma mark - Apple TV
 NSString *AppleTVPlatform(NSString *platform){
     
+    if ([platform isEqualToString:@"AppleTV1,1"])      return @"Apple TV";
     if ([platform isEqualToString:@"AppleTV2,1"])      return @"Apple TV 2";
     if ([platform isEqualToString:@"AppleTV3,1"])      return @"Apple TV 3";
     if ([platform isEqualToString:@"AppleTV5,3"])      return @"Apple TV 4";
@@ -262,6 +269,15 @@ NSString *AppleWatchPlatform(NSString *platform){
     if ([platform isEqualToString:@"Watch5,2"])      return @"Apple Watch Series 5";
     if ([platform isEqualToString:@"Watch5,3"])      return @"Apple Watch Series 5";
     if ([platform isEqualToString:@"Watch5,4"])      return @"Apple Watch Series 5";
+    //2020年9月发布，更新两种机型：Apple Watch SE、Apple Watch S6
+    if ([platform isEqualToString:@"Watch5,9"])      return @"Apple Watch SE";
+    if ([platform isEqualToString:@"Watch5,10"])      return @"Apple Watch SE";
+    if ([platform isEqualToString:@"Watch5,11"])      return @"Apple Watch SE";
+    if ([platform isEqualToString:@"Watch5,12"])      return @"Apple Watch SE";
+    if ([platform isEqualToString:@"Watch6,1"])      return @"Apple Watch Series 6";
+    if ([platform isEqualToString:@"Watch6,2"])      return @"Apple Watch Series 6";
+    if ([platform isEqualToString:@"Watch6,3"])      return @"Apple Watch Series 6";
+    if ([platform isEqualToString:@"Watch6,4"])      return @"Apple Watch Series 6";
 
     NSLog(@"Unknown Apple Watch: %@", platform);
     return platform;
