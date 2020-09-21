@@ -12,6 +12,16 @@
 
 觉得用着还行记得给个star~ ：）
 
+更新：
+```
+2020年9月，更新两款Watch+两款iPad：
+
+1. Apple Watch SE
+2. Apple Watch（第六代）
+3. iPad（第八代）
+4. iPad Air（第四代）
+```
+
 使用方法如下
 ```
 #import "UIDevice+Hardware.h" //需要导入.h文件
@@ -30,3 +40,5 @@ MAC地址：38:C9:86:41:7C:4E
 IP地址：192.168.3.1
 系统：iOS13.1
 ```
+
+
