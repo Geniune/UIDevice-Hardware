@@ -10,9 +10,18 @@
 6. HomePod（目前苹果只推出过一款）
 
 
-觉得用着还行记得给个star~ ：）
+客官觉得用着还行记得给个star~ ：）
 
 更新：
+```
+2020年10月，更新四款iPhone+一款HomePod：
+
+1. iPhone 12 mini
+2. iPhone 12
+3. iPhone 12 Pro
+4. iPhone 12 Pro Max
+5. HomePod mini
+```
 ```
 2020年9月，更新两款Watch+两款iPad：
 

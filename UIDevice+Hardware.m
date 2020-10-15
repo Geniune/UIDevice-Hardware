@@ -62,7 +62,7 @@
     if([platform rangeOfString:@"Watch"].location != NSNotFound){
         return AppleWatchPlatform(platform);
     }
-    if([platform rangeOfString:@"HomePod"].location != NSNotFound){
+    if([platform rangeOfString:@"AudioAccessory"].location != NSNotFound){
         return HomePodPlatform(platform);
     }
     
@@ -74,7 +74,6 @@
 #pragma mark - iPhone
 NSString *iPhonePlatform(NSString *platform){
     
-    //2007年1月发布，更新一种机型：iPhone
     if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone";
     //2008年6月发布，更新一种机型：iPhone 3G
     if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
@@ -125,6 +124,11 @@ NSString *iPhonePlatform(NSString *platform){
     if ([platform isEqualToString:@"iPhone12,5"])  return  @"iPhone 11 Pro Max";
     //2020年4月发布，更新一种机型：iPhone SE2
     if ([platform isEqualToString:@"iPhone12,8"])  return  @"iPhone SE2";
+    //2020年10月发布，更新四种机型：iPhone 12 mini、iPhone 12、iPhone 12 Pro、iPhone 12 Pro Max
+    if ([platform isEqualToString:@"iPhone13,1"])  return  @"iPhone 12 mini";
+    if ([platform isEqualToString:@"iPhone13,2"])  return  @"iPhone 12";
+    if ([platform isEqualToString:@"iPhone13,3"])  return  @"iPhone 12 Pro";
+    if ([platform isEqualToString:@"iPhone13,4"])  return  @"iPhone 12 Pro Max";
     
     NSLog(@"Unknown iPhone: %@", platform);
     return platform;
@@ -289,6 +293,8 @@ NSString *HomePodPlatform(NSString *platform){
     //2017年6月发布，更新一种机型：HomePod
     if ([platform isEqualToString:@"AudioAccessory1,1"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
+    //TODO:2020年10月发布，更新一种机型：HomePod mini
+//    if ([platform isEqualToString:@"AudioAccessory"])      return @"HomePod mini";
 
     NSLog(@"Unknown HomePod: %@", platform);
     return platform;
