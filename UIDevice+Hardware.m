@@ -293,8 +293,8 @@ NSString *HomePodPlatform(NSString *platform){
     //2017年6月发布，更新一种机型：HomePod
     if ([platform isEqualToString:@"AudioAccessory1,1"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
-    //TODO:2020年10月发布，更新一种机型：HomePod mini
-//    if ([platform isEqualToString:@"AudioAccessory"])      return @"HomePod mini";
+    //2020年10月发布，更新一种机型：HomePod mini
+    if ([platform isEqualToString:@"AudioAccessory5,1"])      return @"HomePod mini";
 
     NSLog(@"Unknown HomePod: %@", platform);
     return platform;
