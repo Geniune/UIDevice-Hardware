@@ -7,12 +7,12 @@
 3. iPod 全系列
 4. AirPods 全系列
 5. Apple Watch 全系列
-6. HomePod（目前苹果只推出过一款）
+6. HomePod 全系列
 
 
 客官觉得用着还行记得给个star~ ：）
 
-更新：
+更新日志：
 ```
 2020年10月，更新四款iPhone+一款HomePod：
 
@@ -36,18 +36,19 @@
 #import "UIDevice+Hardware.h" //需要导入.h文件
 
 UIDevice *device = [UIDevice currentDevice];
-NSLog(@"设备型号：%@", device.platformString); 
-NSLog(@"MAC地址：%@", device.macAddress);
-NSLog(@"IP地址：%@", device.ipAddresses);
-NSLog(@"系统：%@%@", theDevice.systemName, theDevice.systemVersion);
+NSLog(@"%@", device.platformString); //设备型号
+NSLog(@"%@ %@", theDevice.systemName, theDevice.systemVersion);//系统版本
+NSLog(@"%@", device.macAddress);//mac地址
+NSLog(@"%@", device.ipAddresses);//IP地址
+
 ```
 
 输出示例：
 ```
-设备型号：iPhone 8
-MAC地址：38:C9:86:41:7C:4E
-IP地址：192.168.3.1
-系统：iOS13.1
+iPhone XS
+iOS 14.0
+F8:E9:4E:28:6A:C9
+192.168.3.1
 ```
 
 
