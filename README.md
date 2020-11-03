@@ -37,7 +37,7 @@
 
 UIDevice *device = [UIDevice currentDevice];
 NSLog(@"%@", device.platformString); //设备型号
-NSLog(@"%@ %@", theDevice.systemName, theDevice.systemVersion);//系统版本
+NSLog(@"%@ %@", device.systemName, device.systemVersion);//系统版本
 NSLog(@"%@", device.macAddress);//mac地址
 NSLog(@"%@", device.ipAddresses);//IP地址
 
