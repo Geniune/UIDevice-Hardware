@@ -41,8 +41,9 @@
     
     NSString *platform = [self platform];
     
+    //注意：请使用真机测试，使用模拟器会返回Simulator（与模拟器所对应的机型无关）
     if ([platform isEqualToString:@"i386"] || [platform isEqualToString:@"x86_64"]){
-        return @"Simulator";//注意：请使用真机测试，使用模拟器会返回Simulator（与模拟器所对应的机型无关）
+        return @"Simulator";
     }
     if([platform rangeOfString:@"iPhone"].location != NSNotFound){
         return iPhonePlatform(platform);
@@ -53,7 +54,8 @@
     if([platform rangeOfString:@"iPod"].location != NSNotFound){
         return iPodPlatform(platform);
     }
-    if([platform rangeOfString:@"AirPods"].location != NSNotFound){
+    if([platform rangeOfString:@"AirPods"].location != NSNotFound ||
+       [platform rangeOfString:@"iProd"].location != NSNotFound){
         return AirPodsPlatform(platform);
     }
     if([platform rangeOfString:@"AppleTV"].location != NSNotFound){
@@ -66,9 +68,7 @@
         return HomePodPlatform(platform);
     }
     
-    NSLog(@"Unknown Device: %@", platform);
-    
-    return platform;
+    return [NSString stringWithFormat:@"Unknown Device: %@", platform];
 }
 
 #pragma mark - iPhone
@@ -231,7 +231,7 @@ NSString *AirPodsPlatform(NSString *platform){
     
     if ([platform isEqualToString:@"AirPods1,1"])      return @"AirPods";
     if ([platform isEqualToString:@"AirPods2,1"])      return @"AirPods 2";
-    if ([platform isEqualToString:@"AirPods8,1"])      return @"AirPods Pro";
+    if ([platform isEqualToString:@"iProd8,1"])          return @"AirPods Pro";
 
     NSLog(@"Unknown AirPods: %@", platform);
     return platform;
