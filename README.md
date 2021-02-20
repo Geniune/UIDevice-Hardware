@@ -14,6 +14,11 @@
 
 更新日志：
 ```
+2021年1月，更新一款AirPods：
+
+1. AirPods Pro
+```
+```
 2020年10月，更新四款iPhone+一款HomePod：
 
 1. iPhone 12 mini
@@ -36,19 +41,12 @@
 #import "UIDevice+Hardware.h" //需要导入.h文件
 
 UIDevice *device = [UIDevice currentDevice];
-NSLog(@"%@", device.platformString); //设备型号
-NSLog(@"%@", device.systemString);//系统版本
-NSLog(@"%@", device.macAddress);//mac地址
-NSLog(@"%@", device.ipAddresses);//IP地址
-
+NSLog(@"%@", [device platformString]); //设备型号
 ```
 
 输出示例：
 ```
 iPhone XS
-iOS 14.0
-F8:E9:4E:28:6A:C9
-192.168.3.1
 ```
 
 
