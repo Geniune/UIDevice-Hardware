@@ -7,7 +7,6 @@
 
 @interface UIDevice (Hardware)
 
-- (NSString *)platform;/// Model Identifier
-- (NSString *)platformString;/// Model Identifier转为Generation
+- (NSString *)generation; ///Device Generation
 
 @end

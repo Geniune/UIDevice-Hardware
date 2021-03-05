@@ -38,10 +38,10 @@
 
 使用方法如下
 ```
-#import "UIDevice+Hardware.h" //需要导入.h文件
+#import "UIDevice+Hardware.h" //导入头文件
 
 UIDevice *device = [UIDevice currentDevice];
-NSLog(@"%@", [device platformString]); //设备型号
+NSLog(@"%@", [device generation]); //设备型号
 ```
 
 输出示例：

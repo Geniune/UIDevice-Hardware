@@ -6,60 +6,7 @@
 //
 
 #import "UIDevice+Hardware.h"
-
-#include <sys/socket.h> // Per msqr
-#include <sys/sysctl.h>
-#include <net/if.h>
-#include <net/if_dl.h>
 #import <sys/utsname.h>
-#import <SystemConfiguration/CaptiveNetwork.h>
-
-@implementation UIDevice (Hardware)
-
-#pragma mark - 设备Model Identifier
-- (NSString *)platform{
-    
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
-
-    return deviceString;
-}
-
-#pragma mark - 将Model Identifier转为设备型号
-- (NSString *)platformString{
-    
-    NSString *platform = [self platform];
-    
-    //注意：请使用真机测试，使用模拟器会返回Simulator（与模拟器所对应的机型无关）
-    if ([platform isEqualToString:@"i386"] || [platform isEqualToString:@"x86_64"]){
-        return @"Simulator";
-    }
-    if([platform rangeOfString:@"iPhone"].location != NSNotFound){
-        return iPhonePlatform(platform);
-    }
-    if([platform rangeOfString:@"iPad"].location != NSNotFound){
-        return iPadPlatform(platform);
-    }
-    if([platform rangeOfString:@"iPod"].location != NSNotFound){
-        return iPodPlatform(platform);
-    }
-    if([platform rangeOfString:@"AirPods"].location != NSNotFound ||
-       [platform rangeOfString:@"iProd"].location != NSNotFound){
-        return AirPodsPlatform(platform);
-    }
-    if([platform rangeOfString:@"AppleTV"].location != NSNotFound){
-        return AppleTVPlatform(platform);
-    }
-    if([platform rangeOfString:@"Watch"].location != NSNotFound){
-        return AppleWatchPlatform(platform);
-    }
-    if([platform rangeOfString:@"AudioAccessory"].location != NSNotFound){
-        return HomePodPlatform(platform);
-    }
-    
-    return [NSString stringWithFormat:@"Unknown Device: %@", platform];
-}
 
 #pragma mark - iPhone
 NSString *iPhonePlatform(NSString *platform){
@@ -288,6 +235,51 @@ NSString *HomePodPlatform(NSString *platform){
 
     NSLog(@"Unknown HomePod: %@", platform);
     return platform;
+}
+
+@implementation UIDevice (Hardware)
+
+#pragma mark - 设备Model Identifier
+- (NSString *)model{
+    
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    return [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+}
+
+#pragma mark - Model Identifier转Generation
+- (NSString *)generation{
+    
+    NSString *model = [self model];
+    
+    //注意：请使用真机测试，使用模拟器会返回Simulator（与模拟器所对应的机型无关）
+    if([model isEqualToString:@"i386"] || [model isEqualToString:@"x86_64"]){
+        return @"Simulator";
+    }
+    if([model rangeOfString:@"iPhone"].location != NSNotFound){
+        return iPhonePlatform(model);
+    }
+    if([model rangeOfString:@"iPad"].location != NSNotFound){
+        return iPadPlatform(model);
+    }
+    if([model rangeOfString:@"iPod"].location != NSNotFound){
+        return iPodPlatform(model);
+    }
+    if([model rangeOfString:@"AirPods"].location != NSNotFound ||
+       [model rangeOfString:@"iProd"].location != NSNotFound){
+        return AirPodsPlatform(model);
+    }
+    if([model rangeOfString:@"AppleTV"].location != NSNotFound){
+        return AppleTVPlatform(model);
+    }
+    if([model rangeOfString:@"Watch"].location != NSNotFound){
+        return AppleWatchPlatform(model);
+    }
+    if([model rangeOfString:@"AudioAccessory"].location != NSNotFound){
+        return HomePodPlatform(model);
+    }
+    
+    return [NSString stringWithFormat:@"Unknown Device: %@", model];
 }
 
 @end
