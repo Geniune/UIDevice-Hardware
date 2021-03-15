@@ -1,16 +1,16 @@
 # UIDevice-Hardware
 相关技术贴链接：https://www.jianshu.com/p/308a4a85e114
 
-获取苹果设备相关信息，目前支持的全家桶：
-1. iPhone 全系列
-2. iPad 全系列
-3. iPod 全系列
-4. AirPods 全系列
-5. Apple Watch 全系列
-6. HomePod 全系列
+觉得用着还行记得给个star~ ：）
 
-
-客官觉得用着还行记得给个star~ ：）
+目前支持的苹果设备全家桶：
+1. AirPods 全系列
+2. Apple TV 全系列
+3. Apple Watch 全系列
+4. HomePod 全系列
+5. iPad 全系列
+6. iPhone 全系列
+7. iPod 全系列
 
 更新日志：
 ```
@@ -48,5 +48,4 @@ NSLog(@"%@", [device generation]); //设备型号
 ```
 iPhone XS
 ```
-
 
