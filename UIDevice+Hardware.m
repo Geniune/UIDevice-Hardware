@@ -45,17 +45,14 @@ NSString *AppleWatchPlatform(NSString *platform){
     if ([platform isEqualToString:@"Watch3,2"])      return @"Apple Watch Series 3";
     if ([platform isEqualToString:@"Watch3,3"])      return @"Apple Watch Series 3";
     if ([platform isEqualToString:@"Watch3,4"])      return @"Apple Watch Series 3";
-    //2018年9月发布，更新一种机型：Apple Watch S4
     if ([platform isEqualToString:@"Watch4,1"])      return @"Apple Watch Series 4";
     if ([platform isEqualToString:@"Watch4,2"])      return @"Apple Watch Series 4";
     if ([platform isEqualToString:@"Watch4,3"])      return @"Apple Watch Series 4";
     if ([platform isEqualToString:@"Watch4,4"])      return @"Apple Watch Series 4";
-    //2019年9月发布，更新一种机型：Apple Watch S5
     if ([platform isEqualToString:@"Watch5,1"])      return @"Apple Watch Series 5";
     if ([platform isEqualToString:@"Watch5,2"])      return @"Apple Watch Series 5";
     if ([platform isEqualToString:@"Watch5,3"])      return @"Apple Watch Series 5";
     if ([platform isEqualToString:@"Watch5,4"])      return @"Apple Watch Series 5";
-    //2020年9月发布，更新两种机型：Apple Watch SE、Apple Watch S6
     if ([platform isEqualToString:@"Watch5,9"])      return @"Apple Watch SE";
     if ([platform isEqualToString:@"Watch5,10"])      return @"Apple Watch SE";
     if ([platform isEqualToString:@"Watch5,11"])      return @"Apple Watch SE";
@@ -72,10 +69,8 @@ NSString *AppleWatchPlatform(NSString *platform){
 #pragma mark - HomePod
 NSString *HomePodPlatform(NSString *platform){
     
-    //2017年6月发布，更新一种机型：HomePod
     if ([platform isEqualToString:@"AudioAccessory1,1"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
-    //2020年10月发布，更新一种机型：HomePod mini
     if ([platform isEqualToString:@"AudioAccessory5,1"])      return @"HomePod mini";
 
     NSLog(@"Unknown HomePod: %@", platform);
@@ -162,56 +157,41 @@ NSString *iPadPlatform(NSString *platform){
 NSString *iPhonePlatform(NSString *platform){
     
     if ([platform isEqualToString:@"iPhone1,1"])    return @"iPhone";
-    //2008年6月发布，更新一种机型：iPhone 3G
     if ([platform isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
-    //2009年6月发布，更新一种机型：iPhone 3G
     if ([platform isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
-    //2010年6月发布，更新一种机型：iPhone 4
     if ([platform isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
     if ([platform isEqualToString:@"iPhone3,2"])    return @"iPhone 4";
     if ([platform isEqualToString:@"iPhone3,3"])    return @"iPhone 4";
-    //2011年10月发布，更新一种机型：iPhone 4s
     if ([platform isEqualToString:@"iPhone4,1"])    return @"iPhone 4s";
-    //2012年9月发布，更新一种机型：iPhone 5
     if ([platform isEqualToString:@"iPhone5,1"])    return @"iPhone 5";
     if ([platform isEqualToString:@"iPhone5,2"])    return @"iPhone 5";
-    //2013年9月发布，更新二种机型：iPhone 5c、iPhone 5s
     if ([platform isEqualToString:@"iPhone5,3"])    return @"iPhone 5c";
     if ([platform isEqualToString:@"iPhone5,4"])    return @"iPhone 5c";
     if ([platform isEqualToString:@"iPhone6,1"])    return @"iPhone 5s";
     if ([platform isEqualToString:@"iPhone6,2"])    return @"iPhone 5s";
-    //2014年9月发布，更新二种机型：iPhone 6、iPhone 6 Plus
     if ([platform isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
     if ([platform isEqualToString:@"iPhone7,1"])    return @"iPhone 6 Plus";
-    //2015年9月发布，更新二种机型：iPhone 6s、iPhone 6s Plus
     if ([platform isEqualToString:@"iPhone8,1"])    return @"iPhone 6s";
     if ([platform isEqualToString:@"iPhone8,2"])    return @"iPhone 6s Plus";
-    //2016年3月发布，更新一种机型：iPhone SE
     if ([platform isEqualToString:@"iPhone8,4"])    return @"iPhone SE";
-    //2016年9月发布，更新二种机型：iPhone 7、iPhone 7 Plus
     if ([platform isEqualToString:@"iPhone9,1"])    return @"iPhone 7";
     if ([platform isEqualToString:@"iPhone9,3"])    return @"iPhone 7";
     if ([platform isEqualToString:@"iPhone9,2"])    return @"iPhone 7 Plus";
     if ([platform isEqualToString:@"iPhone9,4"])    return @"iPhone 7 Plus";
-    //2017年9月发布，更新三种机型：iPhone 8、iPhone 8 Plus、iPhone X
     if ([platform isEqualToString:@"iPhone10,1"])  return @"iPhone 8";
     if ([platform isEqualToString:@"iPhone10,4"])  return @"iPhone 8";
     if ([platform isEqualToString:@"iPhone10,2"])  return @"iPhone 8 Plus";
     if ([platform isEqualToString:@"iPhone10,5"])  return @"iPhone 8 Plus";
     if ([platform isEqualToString:@"iPhone10,3"])  return @"iPhone X";
     if ([platform isEqualToString:@"iPhone10,6"])  return @"iPhone X";
-    //2018年10月发布，更新三种机型：iPhone XR、iPhone XS、iPhone XS Max
     if ([platform isEqualToString:@"iPhone11,8"])  return  @"iPhone XR";
     if ([platform isEqualToString:@"iPhone11,2"])  return @"iPhone XS";
     if ([platform isEqualToString:@"iPhone11,4"])  return @"iPhone XS Max";
     if ([platform isEqualToString:@"iPhone11,6"])  return @"iPhone XS Max";
-    //2019年9月发布，更新三种机型：iPhone 11、iPhone 11 Pro、iPhone 11 Pro Max
     if ([platform isEqualToString:@"iPhone12,1"])  return  @"iPhone 11";
     if ([platform isEqualToString:@"iPhone12,3"])  return  @"iPhone 11 Pro";
     if ([platform isEqualToString:@"iPhone12,5"])  return  @"iPhone 11 Pro Max";
-    //2020年4月发布，更新一种机型：iPhone SE2
     if ([platform isEqualToString:@"iPhone12,8"])  return  @"iPhone SE2";
-    //2020年10月发布，更新四种机型：iPhone 12 mini、iPhone 12、iPhone 12 Pro、iPhone 12 Pro Max
     if ([platform isEqualToString:@"iPhone13,1"])  return  @"iPhone 12 mini";
     if ([platform isEqualToString:@"iPhone13,2"])  return  @"iPhone 12";
     if ([platform isEqualToString:@"iPhone13,3"])  return  @"iPhone 12 Pro";
@@ -230,7 +210,6 @@ NSString *iPodPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPod4,1"])      return @"iPod touch 4";
     if ([platform isEqualToString:@"iPod5,1"])      return @"iPod Touch 5";
     if ([platform isEqualToString:@"iPod7,1"])      return @"iPod touch 6";
-    //2019年5月发布，更新一种机型：iPod touch (7th generation)
     if ([platform isEqualToString:@"iPod9,1"])      return @"iPod touch 7";
 
     NSLog(@"Unknown iPod: %@", platform);
