@@ -15,6 +15,17 @@
 
 更新日志：
 ```
+2021年9月
+
+1. iPad（第九代）
+2. iPad mini（第六代）
+3. iPhone 13 mini
+4. iPhone 13
+5. iPhone 13 Pro
+6. iPhone 13 Pro Max
+
+```
+```
 2021年5月
 
 1. AirPods Max
