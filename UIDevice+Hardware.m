@@ -12,9 +12,13 @@
 NSString *AirPodsPlatform(NSString *platform){
     
     if ([platform isEqualToString:@"AirPods1,1"])      return @"AirPods";
+    if ([platform isEqualToString:@"AirPods1,2"])      return @"AirPods (2nd generation)";
     if ([platform isEqualToString:@"AirPods2,1"])      return @"AirPods (2nd generation)";
+    if ([platform isEqualToString:@"AirPods1,3"])      return @"AirPods (3rd generation)";
     if ([platform isEqualToString:@"AirPods2,2"])      return @"AirPods Pro";
-    if ([platform isEqualToString:@"iProd8,1"])          return @"AirPods Pro";
+    if ([platform isEqualToString:@"AirPodsPro1,1"])      return @"AirPods Pro";
+    if ([platform isEqualToString:@"AirPodsMax1,1"])          return @"AirPods Max";
+    if ([platform isEqualToString:@"iProd8,1"])      return @"AirPods Pro";
     if ([platform isEqualToString:@"iProd8,6"])          return @"AirPods Max";
 
     NSLog(@"Unknown AirPods: %@", platform);
@@ -32,9 +36,9 @@ NSString *AirTagPlatform(NSString *platform){
 
 #pragma mark - Apple TV
 NSString *AppleTVPlatform(NSString *platform){
-    
+
     if ([platform isEqualToString:@"AppleTV1,1"])      return @"Apple TV (1st generation)";
-    if ([platform isEqualToString:@"AppleTV2,1"])      return @"Apple TV (2nd generation) ";
+    if ([platform isEqualToString:@"AppleTV2,1"])      return @"Apple TV (2nd generation)";
     if ([platform isEqualToString:@"AppleTV3,1"])      return @"Apple TV (3rd generation)";
     if ([platform isEqualToString:@"AppleTV5,3"])      return @"Apple TV (4th generation) ";
     if ([platform isEqualToString:@"AppleTV6,2"])      return @"Apple TV 4K (1st generation)";
@@ -47,32 +51,36 @@ NSString *AppleTVPlatform(NSString *platform){
 #pragma mark - Apple Watch
 NSString *AppleWatchPlatform(NSString *platform){
     
-    if ([platform isEqualToString:@"Watch1,1"])      return @"Apple Watch";
-    if ([platform isEqualToString:@"Watch1,2"])      return @"Apple Watch";
-    if ([platform isEqualToString:@"Watch2,6"])      return @"Apple Watch Series 1";
-    if ([platform isEqualToString:@"Watch2,7"])      return @"Apple Watch Series 1";
-    if ([platform isEqualToString:@"Watch2,3"])      return @"Apple Watch Series 2";
-    if ([platform isEqualToString:@"Watch2,4"])      return @"Apple Watch Series 2";
-    if ([platform isEqualToString:@"Watch3,1"])      return @"Apple Watch Series 3";
-    if ([platform isEqualToString:@"Watch3,2"])      return @"Apple Watch Series 3";
-    if ([platform isEqualToString:@"Watch3,3"])      return @"Apple Watch Series 3";
-    if ([platform isEqualToString:@"Watch3,4"])      return @"Apple Watch Series 3";
-    if ([platform isEqualToString:@"Watch4,1"])      return @"Apple Watch Series 4";
-    if ([platform isEqualToString:@"Watch4,2"])      return @"Apple Watch Series 4";
-    if ([platform isEqualToString:@"Watch4,3"])      return @"Apple Watch Series 4";
-    if ([platform isEqualToString:@"Watch4,4"])      return @"Apple Watch Series 4";
-    if ([platform isEqualToString:@"Watch5,1"])      return @"Apple Watch Series 5";
-    if ([platform isEqualToString:@"Watch5,2"])      return @"Apple Watch Series 5";
-    if ([platform isEqualToString:@"Watch5,3"])      return @"Apple Watch Series 5";
-    if ([platform isEqualToString:@"Watch5,4"])      return @"Apple Watch Series 5";
-    if ([platform isEqualToString:@"Watch5,9"])      return @"Apple Watch SE";
-    if ([platform isEqualToString:@"Watch5,10"])    return @"Apple Watch SE";
-    if ([platform isEqualToString:@"Watch5,11"])    return @"Apple Watch SE";
-    if ([platform isEqualToString:@"Watch5,12"])    return @"Apple Watch SE";
-    if ([platform isEqualToString:@"Watch6,1"])      return @"Apple Watch Series 6";
-    if ([platform isEqualToString:@"Watch6,2"])      return @"Apple Watch Series 6";
-    if ([platform isEqualToString:@"Watch6,3"])      return @"Apple Watch Series 6";
-    if ([platform isEqualToString:@"Watch6,4"])      return @"Apple Watch Series 6";
+    if ([platform isEqualToString:@"Watch1,1"])      return @"Apple Watch (1st generation) (38mm)";
+    if ([platform isEqualToString:@"Watch1,2"])      return @"Apple Watch (1st generation) (42mm)";
+    if ([platform isEqualToString:@"Watch2,6"])      return @"Apple Watch Series 1 (38mm)";
+    if ([platform isEqualToString:@"Watch2,7"])      return @"Apple Watch Series 1 (42mm)";
+    if ([platform isEqualToString:@"Watch2,3"])      return @"Apple Watch Series 2 (38mm)";
+    if ([platform isEqualToString:@"Watch2,4"])      return @"Apple Watch Series 2 (42mm)";
+    if ([platform isEqualToString:@"Watch3,1"])      return @"Apple Watch Series 3 (38mm)";
+    if ([platform isEqualToString:@"Watch3,2"])      return @"Apple Watch Series 3 (42mm)";
+    if ([platform isEqualToString:@"Watch3,3"])      return @"Apple Watch Series 3 (38mm)";
+    if ([platform isEqualToString:@"Watch3,4"])      return @"Apple Watch Series 3 (42mm)";
+    if ([platform isEqualToString:@"Watch4,1"])      return @"Apple Watch Series 4 (40mm)";
+    if ([platform isEqualToString:@"Watch4,2"])      return @"Apple Watch Series 4 (44mm)";
+    if ([platform isEqualToString:@"Watch4,3"])      return @"Apple Watch Series 4 (40mm)";
+    if ([platform isEqualToString:@"Watch4,4"])      return @"Apple Watch Series 4 (44mm)";
+    if ([platform isEqualToString:@"Watch5,1"])      return @"Apple Watch Series 5 (40mm)";
+    if ([platform isEqualToString:@"Watch5,2"])      return @"Apple Watch Series 5 (44mm)";
+    if ([platform isEqualToString:@"Watch5,3"])      return @"Apple Watch Series 5 (40mm)";
+    if ([platform isEqualToString:@"Watch5,4"])      return @"Apple Watch Series 5 (44mm)";
+    if ([platform isEqualToString:@"Watch5,9"])      return @"Apple Watch SE (40mm)";
+    if ([platform isEqualToString:@"Watch5,10"])    return @"Apple Watch SE (44mm)";
+    if ([platform isEqualToString:@"Watch5,11"])    return @"Apple Watch SE (40mm)";
+    if ([platform isEqualToString:@"Watch5,12"])    return @"Apple Watch SE (44mm)";
+    if ([platform isEqualToString:@"Watch6,1"])      return @"Apple Watch Series 6 (40mm)";
+    if ([platform isEqualToString:@"Watch6,2"])      return @"Apple Watch Series 6 (44mm)";
+    if ([platform isEqualToString:@"Watch6,3"])      return @"Apple Watch Series 6 (40mm)";
+    if ([platform isEqualToString:@"Watch6,4"])      return @"Apple Watch Series 6 (44mm)";
+    if ([platform isEqualToString:@"Watch6,6"])      return @"Apple Watch Series 7 (41mm)";
+    if ([platform isEqualToString:@"Watch6,7"])      return @"Apple Watch Series 7 (45mm)";
+    if ([platform isEqualToString:@"Watch6,8"])      return @"Apple Watch Series 7 (41mm)";
+    if ([platform isEqualToString:@"Watch6,9"])      return @"Apple Watch Series 7 (45mm)";
 
     NSLog(@"Unknown Apple Watch: %@", platform);
     return platform;
@@ -84,6 +92,10 @@ NSString *HomePodPlatform(NSString *platform){
     if ([platform isEqualToString:@"AudioAccessory1,1"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory5,1"])      return @"HomePod mini";
+    
+    //TODO:更新HomePod mini
+//    if ([platform isEqualToString:@"AudioAccessory5,1"])      return @"HomePod mini (1st generation)";
+//    if ([platform isEqualToString:@"AudioAccessory6,1"])      return @"HomePod mini (2nd generation)";
 
     NSLog(@"Unknown HomePod: %@", platform);
     return platform;
@@ -215,7 +227,7 @@ NSString *iPhonePlatform(NSString *platform){
     if ([platform isEqualToString:@"iPhone12,1"])  return @"iPhone 11";
     if ([platform isEqualToString:@"iPhone12,3"])  return @"iPhone 11 Pro";
     if ([platform isEqualToString:@"iPhone12,5"])  return @"iPhone 11 Pro Max";
-    if ([platform isEqualToString:@"iPhone12,8"])  return @"iPhone SE2";
+    if ([platform isEqualToString:@"iPhone12,8"])  return @"iPhone SE (2nd generation)";
     if ([platform isEqualToString:@"iPhone13,1"])  return @"iPhone 12 mini";
     if ([platform isEqualToString:@"iPhone13,2"])  return @"iPhone 12";
     if ([platform isEqualToString:@"iPhone13,3"])  return @"iPhone 12 Pro";
@@ -264,8 +276,8 @@ NSString *iPodPlatform(NSString *platform){
     if([model isEqualToString:@"i386"] || [model isEqualToString:@"x86_64"]){
         return @"Simulator";
     }
-    
-    if([model rangeOfString:@"AirPods"].location != NSNotFound || [model rangeOfString:@"iProd"].location != NSNotFound){
+
+    if([model rangeOfString:@"AirPods"].location != NSNotFound || [model rangeOfString:@"AirPodsMax"].location != NSNotFound || [model rangeOfString:@"iProd"].location != NSNotFound){
         return AirPodsPlatform(model);
     }
     if([model rangeOfString:@"AirTag"].location != NSNotFound){
