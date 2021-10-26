@@ -17,8 +17,9 @@ NSString *AirPodsPlatform(NSString *platform){
     if ([platform isEqualToString:@"AirPods1,3"])      return @"AirPods (3rd generation)";
     if ([platform isEqualToString:@"AirPods2,2"])      return @"AirPods Pro";
     if ([platform isEqualToString:@"AirPodsPro1,1"])      return @"AirPods Pro";
-    if ([platform isEqualToString:@"AirPodsMax1,1"])          return @"AirPods Max";
     if ([platform isEqualToString:@"iProd8,1"])      return @"AirPods Pro";
+
+    if ([platform isEqualToString:@"AirPodsMax1,1"])          return @"AirPods Max";
     if ([platform isEqualToString:@"iProd8,6"])          return @"AirPods Max";
 
     NSLog(@"Unknown AirPods: %@", platform);
@@ -92,10 +93,6 @@ NSString *HomePodPlatform(NSString *platform){
     if ([platform isEqualToString:@"AudioAccessory1,1"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory5,1"])      return @"HomePod mini";
-    
-    //TODO:更新HomePod mini
-//    if ([platform isEqualToString:@"AudioAccessory5,1"])      return @"HomePod mini (1st generation)";
-//    if ([platform isEqualToString:@"AudioAccessory6,1"])      return @"HomePod mini (2nd generation)";
 
     NSLog(@"Unknown HomePod: %@", platform);
     return platform;
@@ -277,7 +274,7 @@ NSString *iPodPlatform(NSString *platform){
         return @"Simulator";
     }
 
-    if([model rangeOfString:@"AirPods"].location != NSNotFound || [model rangeOfString:@"AirPodsMax"].location != NSNotFound || [model rangeOfString:@"iProd"].location != NSNotFound){
+    if([model rangeOfString:@"AirPods"].location != NSNotFound || [model rangeOfString:@"iProd"].location != NSNotFound){
         return AirPodsPlatform(model);
     }
     if([model rangeOfString:@"AirTag"].location != NSNotFound){
