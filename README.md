@@ -3,6 +3,14 @@
 
 觉得用着还行记得给个star~ ：）
 
+使用方法如下：
+```
+#import "UIDevice+Hardware.h" //需要import头文件
+
+UIDevice *device = [UIDevice currentDevice];
+NSLog(@"%@", [device generation]); //输出
+```
+
 目前支持的苹果设备全家桶：
 1. AirPods 全系列
 2. AirTag 
@@ -60,18 +68,5 @@
 2. Apple Watch（第六代）
 3. iPad（第八代）
 4. iPad Air（第四代）
-```
-
-使用方法如下
-```
-#import "UIDevice+Hardware.h" //导入头文件
-
-UIDevice *device = [UIDevice currentDevice];
-NSLog(@"%@", [device generation]); //设备型号
-```
-
-输出示例：
-```
-iPhone XS
 ```
 
