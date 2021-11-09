@@ -22,7 +22,6 @@ NSString *AirPodsPlatform(NSString *platform){
     if ([platform isEqualToString:@"AirPodsMax1,1"])          return @"AirPods Max";
     if ([platform isEqualToString:@"iProd8,6"])          return @"AirPods Max";
 
-    NSLog(@"Unknown AirPods: %@", platform);
     return platform;
 }
 
@@ -31,7 +30,6 @@ NSString *AirTagPlatform(NSString *platform){
     
     if ([platform isEqualToString:@"AirTag1,1"])      return @"AirTag";
     
-    NSLog(@"Unknown AirTag: %@", platform);
     return platform;
 }
 
@@ -45,7 +43,6 @@ NSString *AppleTVPlatform(NSString *platform){
     if ([platform isEqualToString:@"AppleTV6,2"])      return @"Apple TV 4K (1st generation)";
     if ([platform isEqualToString:@"AppleTV11,1"])    return @"Apple TV 4K (2nd generation)";
 
-    NSLog(@"Unknown Apple TV: %@", platform);
     return platform;
 }
 
@@ -83,7 +80,6 @@ NSString *AppleWatchPlatform(NSString *platform){
     if ([platform isEqualToString:@"Watch6,8"])      return @"Apple Watch Series 7 (41mm)";
     if ([platform isEqualToString:@"Watch6,9"])      return @"Apple Watch Series 7 (45mm)";
 
-    NSLog(@"Unknown Apple Watch: %@", platform);
     return platform;
 }
 
@@ -94,7 +90,6 @@ NSString *HomePodPlatform(NSString *platform){
     if ([platform isEqualToString:@"AudioAccessory1,2"])      return @"HomePod";
     if ([platform isEqualToString:@"AudioAccessory5,1"])      return @"HomePod mini";
 
-    NSLog(@"Unknown HomePod: %@", platform);
     return platform;
 }
 
@@ -182,7 +177,6 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad14,1"]) return @"iPad mini (6th generation)";
     if ([platform isEqualToString:@"iPad14,2"]) return @"iPad mini (6th generation)";
 
-    NSLog(@"Unknown iPad: %@", platform);
     return platform;
 }
 
@@ -234,8 +228,7 @@ NSString *iPhonePlatform(NSString *platform){
     if ([platform isEqualToString:@"iPhone14,5"])  return @"iPhone 13";
     if ([platform isEqualToString:@"iPhone14,2"])  return @"iPhone 13 Pro";
     if ([platform isEqualToString:@"iPhone14,3"])  return @"iPhone 13 Pro Max";
-    
-    NSLog(@"Unknown iPhone: %@", platform);
+
     return platform;
 }
 
@@ -250,7 +243,6 @@ NSString *iPodPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPod7,1"])      return @"iPod touch 6";
     if ([platform isEqualToString:@"iPod9,1"])      return @"iPod touch 7";
 
-    NSLog(@"Unknown iPod: %@", platform);
     return platform;
 }
 
@@ -273,33 +265,33 @@ NSString *iPodPlatform(NSString *platform){
     if([model isEqualToString:@"i386"] || [model isEqualToString:@"x86_64"]){
         return @"Simulator";
     }
-
-    if([model rangeOfString:@"AirPods"].location != NSNotFound || [model rangeOfString:@"iProd"].location != NSNotFound){
+    
+    if([model hasPrefix:@"AirPods"] || [str hasPrefix:@"iProd"]){
         return AirPodsPlatform(model);
     }
-    if([model rangeOfString:@"AirTag"].location != NSNotFound){
+    if([model hasPrefix:@"AirTag"]){
         return AirTagPlatform(model);
     }
-    if([model rangeOfString:@"AppleTV"].location != NSNotFound){
+    if([model hasPrefix:@"AppleTV"]){
         return AppleTVPlatform(model);
     }
-    if([model rangeOfString:@"Watch"].location != NSNotFound){
+    if([model hasPrefix:@"Watch"]){
         return AppleWatchPlatform(model);
     }
-    if([model rangeOfString:@"AudioAccessory"].location != NSNotFound){
+    if([model hasPrefix:@"AudioAccessory"]){
         return HomePodPlatform(model);
     }
-    if([model rangeOfString:@"iPad"].location != NSNotFound){
+    if([model hasPrefix:@"iPad"]){
         return iPadPlatform(model);
     }
-    if([model rangeOfString:@"iPhone"].location != NSNotFound){
+    if([model hasPrefix:@"iPhone"]){
         return iPhonePlatform(model);
     }
-    if([model rangeOfString:@"iPod"].location != NSNotFound){
+    if([model hasPrefix:@"iPod"]){
         return iPodPlatform(model);
     }
     
-    return [NSString stringWithFormat:@"Unknown Device: %@", model];
+    return [NSString stringWithFormat:@"Unknown Device Model: %@", model];
 }
 
 @end
