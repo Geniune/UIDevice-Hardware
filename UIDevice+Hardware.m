@@ -262,11 +262,11 @@ NSString *iPodPlatform(NSString *platform){
     NSString *model = [self model];
     
     //注意：请使用真机测试，使用模拟器会返回Simulator（与模拟器所对应的机型无关）
-    if([model isEqualToString:@"i386"] || [model isEqualToString:@"x86_64"]){
+    if([model isEqualToString:@"x86_64"] || [model isEqualToString:@"arm64"]){
         return @"Simulator";
     }
     
-    if([model hasPrefix:@"AirPods"] || [str hasPrefix:@"iProd"]){
+    if([model hasPrefix:@"AirPods"] || [model hasPrefix:@"iProd"]){
         return AirPodsPlatform(model);
     }
     if([model hasPrefix:@"AirTag"]){
