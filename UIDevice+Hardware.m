@@ -11,16 +11,16 @@
 #pragma mark - AirPods
 NSString *AirPodsPlatform(NSString *platform){
     
-    if ([platform isEqualToString:@"AirPods1,1"])      return @"AirPods";
+    if ([platform isEqualToString:@"AirPods1,1"])      return @"AirPods (1st generation)";
     if ([platform isEqualToString:@"AirPods1,2"])      return @"AirPods (2nd generation)";
     if ([platform isEqualToString:@"AirPods2,1"])      return @"AirPods (2nd generation)";
     if ([platform isEqualToString:@"AirPods1,3"])      return @"AirPods (3rd generation)";
-    if ([platform isEqualToString:@"AirPods2,2"])      return @"AirPods Pro";
-    if ([platform isEqualToString:@"AirPodsPro1,1"])      return @"AirPods Pro";
-    if ([platform isEqualToString:@"iProd8,1"])      return @"AirPods Pro";
-
-    if ([platform isEqualToString:@"AirPodsMax1,1"])          return @"AirPods Max";
-    if ([platform isEqualToString:@"iProd8,6"])          return @"AirPods Max";
+    if ([platform isEqualToString:@"Audio2,1"])         return @"AirPods (3rd generation)";
+    if ([platform isEqualToString:@"AirPods2,2"])            return @"AirPods Pro";
+    if ([platform isEqualToString:@"AirPodsPro1,1"])       return @"AirPods Pro";
+    if ([platform isEqualToString:@"iProd8,1"])                 return @"AirPods Pro";
+    if ([platform isEqualToString:@"iProd8,6"])                 return @"AirPods Max";
+    if ([platform isEqualToString:@"AirPodsMax1,1"])      return @"AirPods Max";
 
     return platform;
 }
@@ -261,37 +261,38 @@ NSString *iPodPlatform(NSString *platform){
     
     NSString *model = [self model];
     
-    //注意：请使用真机测试，使用模拟器会返回Simulator（与模拟器所对应的机型无关）
-    if([model isEqualToString:@"x86_64"] || [model isEqualToString:@"arm64"]){
-        return @"Simulator";
+    //注意：请使用真机测试，否则会固定返回simulator
+    if([model isEqualToString:@"x86_64"] || [model isEqualToString:@"arm64"]){//intel和M系列芯片
+        return @"simulator";
     }
-    
-    if([model hasPrefix:@"AirPods"] || [model hasPrefix:@"iProd"]){
+    if([model hasPrefix:@"iPhone"]){
+        return iPhonePlatform(model);
+    }
+    if([model hasPrefix:@"iPad"]){
+        return iPadPlatform(model);
+    }
+    if([model hasPrefix:@"Watch"]){
+        return AppleWatchPlatform(model);
+    }
+    if([model hasPrefix:@"AppleTV"]){
+        return AppleTVPlatform(model);
+    }
+    if([model hasPrefix:@"iPod"]){
+        return iPodPlatform(model);
+    }
+    if([model hasPrefix:@"AudioAccessory"]){
+        return HomePodPlatform(model);
+    }
+    if([model hasPrefix:@"AirPods"] || [model hasPrefix:@"iProd"] || [model hasPrefix:@"Audio"]){
         return AirPodsPlatform(model);
     }
     if([model hasPrefix:@"AirTag"]){
         return AirTagPlatform(model);
     }
-    if([model hasPrefix:@"AppleTV"]){
-        return AppleTVPlatform(model);
-    }
-    if([model hasPrefix:@"Watch"]){
-        return AppleWatchPlatform(model);
-    }
-    if([model hasPrefix:@"AudioAccessory"]){
-        return HomePodPlatform(model);
-    }
-    if([model hasPrefix:@"iPad"]){
-        return iPadPlatform(model);
-    }
-    if([model hasPrefix:@"iPhone"]){
-        return iPhonePlatform(model);
-    }
-    if([model hasPrefix:@"iPod"]){
-        return iPodPlatform(model);
-    }
+        
+    NSLog(@"Unknown Device Model: %@", model);
     
-    return [NSString stringWithFormat:@"Unknown Device Model: %@", model];
+    return model;
 }
 
 @end
