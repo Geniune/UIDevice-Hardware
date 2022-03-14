@@ -7,6 +7,7 @@
 
 @interface UIDevice (Hardware)
 
-- (NSString *)generation; ///Device Generation
+//注意：请使用真机测试，否则会固定返回simulator
+- (NSString *)generation;
 
 @end

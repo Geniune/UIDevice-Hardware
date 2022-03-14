@@ -23,6 +23,12 @@ NSLog(@"%@", [device generation]); //输出
 
 更新日志：
 ```
+2022年3月
+
+1. iPhone SE（第三代）
+2. iPad Air（第五代）
+```
+```
 2021年10月
 
 1. Apple Watch（第七代）
