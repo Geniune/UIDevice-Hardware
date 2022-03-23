@@ -169,7 +169,8 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad13,11"]) return @"iPad Pro (12.9-inch) (5th generation)";
     if ([platform isEqualToString:@"iPad14,1"]) return @"iPad mini (6th generation)";
     if ([platform isEqualToString:@"iPad14,2"]) return @"iPad mini (6th generation)";
-    if ([platform isEqualToString:@"iPad15,1"]) return @"iPad Air (5th generation)";
+    if ([platform isEqualToString:@"iPad13,16"]) return @"iPad Air (5th generation)";
+    if ([platform isEqualToString:@"iPad13,17"]) return @"iPad Air (5th generation)";
 
     return platform;
 }
