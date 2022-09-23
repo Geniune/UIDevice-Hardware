@@ -18,6 +18,7 @@ NSString *AirPodsPlatform(NSString *platform){
     if ([platform isEqualToString:@"Audio2,1"])         return @"AirPods (3rd generation)";
     if ([platform isEqualToString:@"AirPods2,2"])            return @"AirPods Pro";
     if ([platform isEqualToString:@"AirPodsPro1,1"])       return @"AirPods Pro";
+    if ([platform isEqualToString:@"AirPodsPro1,2"])       return @"AirPods Pro (2nd generation)";
     if ([platform isEqualToString:@"iProd8,1"])                 return @"AirPods Pro";
     if ([platform isEqualToString:@"iProd8,6"])                 return @"AirPods Max";
     if ([platform isEqualToString:@"AirPodsMax1,1"])      return @"AirPods Max";
@@ -79,6 +80,7 @@ NSString *AppleWatchPlatform(NSString *platform){
     if ([platform isEqualToString:@"Watch6,7"])      return @"Apple Watch Series 7 (45mm)";
     if ([platform isEqualToString:@"Watch6,8"])      return @"Apple Watch Series 7 (41mm)";
     if ([platform isEqualToString:@"Watch6,9"])      return @"Apple Watch Series 7 (45mm)";
+    if ([platform isEqualToString:@"Watch6,18"])    return @"Apple Watch Ultra";
 
     return platform;
 }
@@ -167,10 +169,10 @@ NSString *iPadPlatform(NSString *platform){
     if ([platform isEqualToString:@"iPad13,9"]) return @"iPad Pro (12.9-inch) (5th generation)";
     if ([platform isEqualToString:@"iPad13,10"]) return @"iPad Pro (12.9-inch) (5th generation)";
     if ([platform isEqualToString:@"iPad13,11"]) return @"iPad Pro (12.9-inch) (5th generation)";
-    if ([platform isEqualToString:@"iPad14,1"]) return @"iPad mini (6th generation)";
-    if ([platform isEqualToString:@"iPad14,2"]) return @"iPad mini (6th generation)";
     if ([platform isEqualToString:@"iPad13,16"]) return @"iPad Air (5th generation)";
     if ([platform isEqualToString:@"iPad13,17"]) return @"iPad Air (5th generation)";
+    if ([platform isEqualToString:@"iPad14,1"]) return @"iPad mini (6th generation)";
+    if ([platform isEqualToString:@"iPad14,2"]) return @"iPad mini (6th generation)";
 
     return platform;
 }
@@ -223,6 +225,10 @@ NSString *iPhonePlatform(NSString *platform){
     if ([platform isEqualToString:@"iPhone14,4"])  return @"iPhone 13 mini";
     if ([platform isEqualToString:@"iPhone14,5"])  return @"iPhone 13";
     if ([platform isEqualToString:@"iPhone14,6"]) return @"iPhone SE (3rd generation)";
+    if ([platform isEqualToString:@"iPhone14,7"]) return @"iPhone 14";
+    if ([platform isEqualToString:@"iPhone14,8"]) return @"iPhone 14 Plus";
+    if ([platform isEqualToString:@"iPhone15,2"]) return @"iPhone 14 Pro";
+    if ([platform isEqualToString:@"iPhone15,3"]) return @"iPhone 14 Pro Max";
 
     return platform;
 }

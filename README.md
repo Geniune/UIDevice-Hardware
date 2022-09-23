@@ -23,6 +23,16 @@ NSLog(@"%@", [device generation]); //输出
 
 更新日志：
 ```
+2022年9月
+
+1. iPhone 14
+2. iPhone 14 Plus
+3. iPhone 14 Pro
+4. iPhone 14 Pro Max
+5. AirPods Pro (第二代)
+6. Apple Watch Ultra
+```
+```
 2022年3月
 
 1. iPhone SE（第三代）
